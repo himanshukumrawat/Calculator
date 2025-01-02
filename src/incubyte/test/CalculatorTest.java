@@ -141,4 +141,43 @@ class CalculatorTest {
         assert res == 6;
     }
 
+    /**
+     * Verifies that add() handles edge case of custom delimiter with no numbers.
+     */
+    @Test
+    void testAddWithCustomDelimiterNoNumbers() {
+        int res = calculator.add("//;");
+        assert res == 0;
+    }
+
+    /**
+     * Verifies that add() handles edge case of custom delimiter with no numbers
+     * and a trailing comma.
+     */
+    @Test
+    void testAddWithCustomDelimiterNoNumbersWithTrailingComma() {
+        int res = calculator.add("//;");
+        assert res == 0;
+    }
+
+    /**
+     * Verifies that add() handles edge case of custom delimiter with no numbers
+     * and a trailing comma and a space after the comma.
+     */
+    @Test
+    void testAddWithCustomDelimiterNoNumbersWithTrailingCommaAndSpace() {
+        int res = calculator.add("//;");
+        assert res == 0;
+    }
+
+    /**
+     * Verifies that add() handles edge case of custom delimiter with no numbers
+     * and a trailing comma and a space after the comma and a new line.
+     */
+    @Test
+    void testAddWithCustomDelimiterNoNumbersWithTrailingCommaAndSpaceAndNewLine() {
+        int res = calculator.add("//;\n");
+        assert res == 0;
+    }
+
 }

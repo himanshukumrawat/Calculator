@@ -15,6 +15,9 @@ public class Calculator {
         String[] numArray;
         if (numbers.startsWith("//")) {
             String[] lines = numbers.split("\n");
+            if (lines.length < 2) {
+                return 0;
+            }
             String delimiter = lines[0].substring(2);
             numArray = lines[1].split(delimiter);
         } else {
