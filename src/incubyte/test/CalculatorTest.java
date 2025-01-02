@@ -9,6 +9,9 @@ package incubyte.test;
 import incubyte.main.Calculator;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 class CalculatorTest {
 
     Calculator calculator = new Calculator();
@@ -83,33 +86,25 @@ class CalculatorTest {
     }
 
     /**
-     * Verifies that add() returns the correct sum when given a string containing
-     * one negative number and other positive numbers.
+     * Verifies that add() throws an exception when given a string containing one
+     * negative number and other positive numbers.
      */
     @Test
     void testAddOneNegative() {
-        int res = calculator.add("-1,2,3");
-        assert res == 4;
+        String input = "-1,2,3";
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.add(input));
+        assertEquals("negative numbers not allowed -1", exception.getMessage());
     }
 
     /**
-     * Verifies that add() returns the correct sum when given a string containing
-     * multiple negative numbers.
-     */
-    @Test
-    void testAddMultipleNegative() {
-        int res = calculator.add("-1,-2,-3");
-        assert res == -6;
-    }
-
-    /**
-     * Verifies that add() returns the correct sum when given a string containing
-     * both positive and negative numbers.
+     * Verifies that add() throws an exception when given a string containing
+     * negative numbers.
      */
     @Test
     void testAddMultipleNegativeAndPositive() {
-        int res = calculator.add("-1,2,-3,4");
-        assert res == 2;
+        String input = "-1,2,-3,4";
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> calculator.add(input));
+        assertEquals("negative numbers not allowed -1,-3", exception.getMessage());
     }
 
     /**
