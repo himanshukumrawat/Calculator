@@ -19,12 +19,12 @@ public class Calculator {
 
         String[] numArray;
         if (numbers.startsWith("//")) {
-            String[] lines = numbers.split("\n");
+            String[] lines = numbers.split("\n", 2);
             if (lines.length < 2) {
                 return 0; // custom delimiter but no numbers
             }
             String delimiter = lines[0].substring(2);
-            numArray = lines[1].split(delimiter); // split on custom delimiter
+            numArray = lines[1].split(delimiter + "|[\n]"); // split on custom delimiter and new line
         } else {
             numArray = numbers.split("[,\n]"); // split on comma and new line
         }
@@ -32,11 +32,14 @@ public class Calculator {
         StringBuilder sb = new StringBuilder();
         int sum = 0;
         for (String num : numArray) {
-            int number = Integer.parseInt(num.trim());
-            if (number < 0) {
-                sb.append(number).append(","); // collect negative numbers
-            } else {
-                sum += number; // add positive numbers
+            num = num.trim();
+            if (!num.isEmpty()) {
+                int number = Integer.parseInt(num);
+                if (number < 0) {
+                    sb.append(number).append(","); // collect negative numbers
+                } else {
+                    sum += number; // add positive numbers
+                }
             }
         }
 
