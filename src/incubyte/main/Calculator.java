@@ -12,7 +12,15 @@ public class Calculator {
             return 0;
         }
 
-        String[] numArray = numbers.split("[,\n]");
+        String[] numArray;
+        if (numbers.startsWith("//")) {
+            String[] lines = numbers.split("\n");
+            String delimiter = lines[0].substring(2);
+            numArray = lines[1].split(delimiter);
+        } else {
+            numArray = numbers.split("[,\n]");
+        }
+
         int sum = 0;
         for (String num : numArray) {
             sum += Integer.parseInt(num.trim());

@@ -131,5 +131,14 @@ class CalculatorTest {
         int res = calculator.add("1,2\n3");
         assert res == 6;
     }
-    
+
+    /**
+     * Verifies that add() supports custom delimiters and returns the correct sum.
+     */
+    @Test
+    void testAddWithCustomDelimiter() {
+        int res = calculator.add("//;\n1;2;3");
+        assert res == 6;
+    }
+
 }
