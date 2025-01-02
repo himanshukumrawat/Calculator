@@ -1,9 +1,12 @@
+/**
+ * JUnit tests for the Calculator class.
+ * 
+ * @author Himanshu Kumrawat
+ */
 package incubyte.test;
 
 import incubyte.main.Calculator;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 
@@ -44,6 +47,32 @@ class CalculatorTest {
 
     @Test
     void testAddMultipleWith3Numbers() {
-        assertThrows(IllegalArgumentException.class, () -> calculator.add("1,2,3"));
+        int res = calculator.add("1,2,3");
+        assert res == 6;
     }
+
+    @Test
+    void testAddMultipleWith4Numbers() {
+        int res = calculator.add("1,2,3,4");
+        assert res == 10;
+    }
+
+    @Test
+    void testAddOneNegative() {
+        int res = calculator.add("-1,2,3");
+        assert res == 4;
+    }
+
+    @Test
+    void testAddMultipleNegative() {
+        int res = calculator.add("-1,-2,-3");
+        assert res == -6;
+    }
+
+    @Test
+    void testAddMultipleNegativeAndPositive() {
+        int res = calculator.add("-1,2,-3,4");
+        assert res == 2;
+    }
+    
 }
