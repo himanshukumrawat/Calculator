@@ -29,13 +29,13 @@ public class Calculator {
             numArray = numbers.split("[,\n]"); // split on comma and new line
         }
 
-        StringBuilder sb = new StringBuilder();
-        int sum = 0;
+        StringBuilder sb = new StringBuilder(); // To collect negative numbers
+        int sum = 0; // Initialize sum
         for (String num : numArray) {
-            num = num.trim();
-            if (!num.isEmpty()) {
-                int number = Integer.parseInt(num);
-                if (number < 0) {
+            num = num.trim(); // Trim whitespace
+            if (!num.isEmpty()) { // Check if not empty
+                int number = Integer.parseInt(num); // Parse integer
+                if (number < 0) { // Check for negative numbers
                     sb.append(number).append(","); // collect negative numbers
                 } else {
                     sum += number; // add positive numbers
