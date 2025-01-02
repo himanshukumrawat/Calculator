@@ -1,4 +1,5 @@
 /**
+ *
  * JUnit tests for the Calculator class.
  * 
  * @author Himanshu Kumrawat
@@ -21,58 +22,114 @@ class CalculatorTest {
         assert res == 0;
     }
 
+    /**
+     * Verifies that add() returns the correct result when given a string with a
+     * single number.
+     */
     @Test
     void testAddSingle() {
         int res = calculator.add("1");
         assert res == 1;
     }
 
+    /**
+     * Verifies that add() returns the correct sum when given a string of multiple
+     * numbers separated by commas.
+     */
     @Test
     void testAddMultiple() {
         int res = calculator.add("1,2");
         assert res == 3;
     }
 
+    /**
+     * Verifies that add() returns the correct result when given a string with a
+     * trailing comma.
+     */
     @Test
     void testAddMultipleWithTrailingComma() {
         int res = calculator.add("1,");
         assert res == 1;
     }
 
+    /**
+     * Verifies that add() returns the correct sum when given a string of multiple
+     * numbers separated by commas with a space after the comma.
+     */
     @Test
     void testAddMultipleWithWhiteSpace() {
         int res = calculator.add("1, 2");
         assert res == 3;
     }
 
+    /**
+     * Verifies that add() returns the correct sum when given a string of 3
+     * numbers separated by commas.
+     */
     @Test
     void testAddMultipleWith3Numbers() {
         int res = calculator.add("1,2,3");
         assert res == 6;
     }
 
+    /**
+     * Verifies that add() returns the correct sum when given a string of 4
+     * numbers separated by commas.
+     */
     @Test
     void testAddMultipleWith4Numbers() {
         int res = calculator.add("1,2,3,4");
         assert res == 10;
     }
 
+    /**
+     * Verifies that add() returns the correct sum when given a string containing
+     * one negative number and other positive numbers.
+     */
     @Test
     void testAddOneNegative() {
         int res = calculator.add("-1,2,3");
         assert res == 4;
     }
 
+    /**
+     * Verifies that add() returns the correct sum when given a string containing
+     * multiple negative numbers.
+     */
     @Test
     void testAddMultipleNegative() {
         int res = calculator.add("-1,-2,-3");
         assert res == -6;
     }
 
+    /**
+     * Verifies that add() returns the correct sum when given a string containing
+     * both positive and negative numbers.
+     */
     @Test
     void testAddMultipleNegativeAndPositive() {
         int res = calculator.add("-1,2,-3,4");
         assert res == 2;
+    }
+
+    /**
+     * Verifies that add() returns the correct sum when given a string containing
+     * multiple numbers separated by new lines.
+     */
+    @Test
+    void testAddMultipleWithNewLine() {
+        int res = calculator.add("1\n2\n3");
+        assert res == 6;
+    }
+
+    /**
+     * Verifies that add() returns the correct sum when given a string containing
+     * multiple numbers separated by both commas and new lines.
+     */
+    @Test
+    void testAddMultipleWithCommaAndNewLine() {
+        int res = calculator.add("1,2\n3");
+        assert res == 6;
     }
     
 }
